@@ -2,6 +2,9 @@
 
 FileGO is a decentralized file storage and sharing platform built with Go and React. It provides secure, distributed file storage using peer-to-peer networking with features like encryption, chunking, and streaming.
 
+![Main Interface](MainInterface.png)
+![Node Manager](NodeManager.png)
+
 ## Features
 
 - **Peer-to-Peer Networking**: Connect directly with other nodes without a central server
@@ -35,35 +38,21 @@ FileGO consists of two main components:
 
 - **Go** - Primary programming language
 - **Gin** - HTTP web framework
-- **gorilla/websocket** - WebSocket implementation for real-time communication
-- **crypto/aes** - Advanced Encryption Standard implementation
-- **encoding/json** - JSON processing
+- **crypto/aes** - Advanced Encryption Standard implementation for file encryption
+- **encoding/json** - JSON processing for API responses
 - **net/http** - HTTP client and server implementations
-- **uuid** - UUID generation for unique identifiers
-- **sync** - Synchronization primitives for concurrent programming
+- **path/filepath** - File path manipulation
+- **github.com/google/uuid** - UUID generation for unique identifiers
 
 ### Frontend
 
 - **React** - JavaScript library for building user interfaces
-- **Material-UI** - React UI framework
-- **React Router** - Navigation and routing
-- **Axios** - HTTP client for API requests
-- **React Query** - Data fetching and state management
-- **React Dropzone** - File upload component
-- **Chart.js** - Data visualization
+- **Material-UI** - React UI framework for component styling
 
 ### Development Tools
 
 - **Git** - Version control
-- **npm/yarn** - Package management for frontend
 - **go mod** - Dependency management for Go backend
-- **ESLint** - JavaScript linting
-- **Prettier** - Code formatting
-
-### Deployment
-
-- **Docker** - Containerization (optional)
-- **Nginx** - Web server (optional)
 
 ## Getting Started
 
@@ -270,11 +259,3 @@ go run cmd/main.go --port 8081 --p2p-port 9001 --id secondary-node --peers "loca
 # Node 3
 go run cmd/main.go --port 8082 --p2p-port 9002 --id backup-node --peers "localhost:9000,localhost:9001"
 ```
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
