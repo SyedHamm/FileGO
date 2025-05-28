@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"path/filepath"
 	"strconv"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
@@ -77,11 +78,39 @@ func (c *Controller) GetFile(ctx *gin.Context) {
 		}
 		defer reader.Close()
 		
+		// Detect content type based on file extension
+		contentType := "application/octet-stream"
+		fileExt := filepath.Ext(filePath)
+		switch strings.ToLower(fileExt) {
+		case ".png":
+			contentType = "image/png"
+		case ".jpg", ".jpeg":
+			contentType = "image/jpeg"
+		case ".gif":
+			contentType = "image/gif"
+		case ".pdf":
+			contentType = "application/pdf"
+		case ".txt":
+			contentType = "text/plain"
+		case ".html", ".htm":
+			contentType = "text/html"
+		case ".mp3":
+			contentType = "audio/mpeg"
+		case ".mp4":
+			contentType = "video/mp4"
+		case ".json":
+			contentType = "application/json"
+		case ".xml":
+			contentType = "application/xml"
+		case ".zip":
+			contentType = "application/zip"
+		}
+		
 		// Set the content disposition header for download
 		ctx.Header("Content-Disposition", fmt.Sprintf("attachment; filename=%s", filepath.Base(filePath)))
-		ctx.Header("Content-Type", "application/octet-stream")
+		ctx.Header("Content-Type", contentType)
 		
-		ctx.DataFromReader(http.StatusOK, -1, "application/octet-stream", reader, nil)
+		ctx.DataFromReader(http.StatusOK, -1, contentType, reader, nil)
 	} else {
 		// Get file info
 		fileInfo, err := c.FS.GetFileInfo(filePath)
