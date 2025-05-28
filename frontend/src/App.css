@@ -1,0 +1,44 @@
+.file-icon {
+  margin-right: 8px;
+}
+
+.node-status-active {
+  color: #4caf50;
+}
+
+.node-status-inactive {
+  color: #ff9800;
+}
+
+.node-status-failed {
+  color: #f44336;
+}
+
+.breadcrumb-item {
+  cursor: pointer;
+}
+
+.breadcrumb-item:hover {
+  text-decoration: underline;
+}
+
+.file-list-item {
+  cursor: pointer;
+}
+
+.file-list-item:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.upload-dropzone {
+  border: 2px dashed #cccccc;
+  border-radius: 4px;
+  padding: 20px;
+  text-align: center;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.upload-dropzone:hover {
+  border-color: #3f51b5;
+}
